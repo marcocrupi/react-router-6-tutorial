@@ -9,6 +9,8 @@ function App() {
   return (
     // <BrowserRouter> ci connette al browser
     <BrowserRouter>
+    <nav>our nav</nav>
+
       {/* <Routes> è parente di tutti i <Route> */}
       <Routes>
         {/* <Route> è per ogni pagina ed ha due props path e element, 
@@ -20,6 +22,7 @@ function App() {
         digiti un url non previsto */}
         <Route path="*" element={<Error />}></Route>
       </Routes>
+      <footer>our footer</footer>
     </BrowserRouter>
   );
 }
