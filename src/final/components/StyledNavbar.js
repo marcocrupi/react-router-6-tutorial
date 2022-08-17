@@ -4,6 +4,7 @@ const Navbar = () => {
     <nav className='navbar'>
       <NavLink
         to='/'
+        // "link active" fanno riferimento a classi in index.css
         className={({ isActive }) => (isActive ? 'link active' : 'link')}
       >
         Home
