@@ -22,7 +22,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="products" element={<Products />} />
-          {/* In una pagina <Products> non voglio specificare una pagina
+          {/* URL Params. In una pagina <Products> non voglio specificare una pagina
           per ogni prodotto non voglio creare ogni volta una pagina specifica 
           ha più senso creare una pagina con un url che faccia da placeholder 
           e che cambi a seconda del prodotto, così posso avere una pagina anche per 
