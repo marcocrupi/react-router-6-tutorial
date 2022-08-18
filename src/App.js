@@ -8,6 +8,7 @@ import SharedLayout from "./pages/SharedLayout";
 import SingleProduct from "./pages/SingleProduct";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
+import ProtectedRoute from "./pages/ProtectedRoute";
 
 
 function App() {
@@ -35,7 +36,15 @@ function App() {
           <Route path="products/:productId" element={<SingleProduct />} />
 
           <Route path="login" element={<Login setUser={setUser}></Login>} />
-          <Route path="dashboard" element={<Dashboard user={user}></Dashboard>} />
+          <Route
+            path="dashboard"
+            element={
+              // In questo modo solo se user esiste visualizza la dashboard
+              <ProtectedRoute user={user}>
+                <Dashboard user={user} />
+              </ProtectedRoute>
+            }
+          />
 
           {/* Possiamo impostare una pagina di errore in caso qualcuno
           digiti un url non previsto */}
