@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -5,8 +6,12 @@ import Products from "./pages/Products";
 import Error from "./pages/Error";
 import SharedLayout from "./pages/SharedLayout";
 import SingleProduct from "./pages/SingleProduct";
+import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login";
+
 
 function App() {
+  const [user, setUser] = useState(null);
   return (
     // <BrowserRouter> ci connette al browser
     <BrowserRouter>
@@ -28,6 +33,10 @@ function App() {
           e che cambi a seconda del prodotto, così posso avere una pagina anche per 
           4000 prodotti ad esempio */}
           <Route path="products/:productId" element={<SingleProduct />} />
+
+          <Route path="login" element={<Login setUser={setUser}></Login>} />
+          <Route path="dashboard" element={<Dashboard user={user}></Dashboard>} />
+
           {/* Possiamo impostare una pagina di errore in caso qualcuno
           digiti un url non previsto */}
           <Route path="*" element={<Error />} />
