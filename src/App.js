@@ -9,7 +9,7 @@ import SingleProduct from "./pages/SingleProduct";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import ProtectedRoute from "./pages/ProtectedRoute";
-
+import SharedProductLayout from "./pages/SharedProductLayout";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -27,14 +27,16 @@ function App() {
           nell'outlet del genitore all'URL del genitore. */}
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
-          <Route path="products" element={<Products />} />
-          {/* URL Params. In una pagina <Products> non voglio specificare una pagina
+
+          <Route path="products" element={<SharedProductLayout />}>
+            <Route index element={<Products />} />
+            {/* URL Params. In una pagina <Products> non voglio specificare una pagina
           per ogni prodotto non voglio creare ogni volta una pagina specifica 
           ha più senso creare una pagina con un url che faccia da placeholder 
           e che cambi a seconda del prodotto, così posso avere una pagina anche per 
           4000 prodotti ad esempio */}
-          <Route path="products/:productId" element={<SingleProduct />} />
-
+            <Route path=":productId" element={<SingleProduct />} />
+          </Route>
           <Route path="login" element={<Login setUser={setUser}></Login>} />
           <Route
             path="dashboard"
